@@ -3,8 +3,11 @@
   "minVersion": "0.8",
   "package": "com.elefant.botAuthentication.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "LoginChecker"
+  "server": [
+    "server.LoginChecker"
+  ],
+  "client": [
+    "client.LoginPinger"
   ],
   "injectors": {
     "defaultRequire": 1

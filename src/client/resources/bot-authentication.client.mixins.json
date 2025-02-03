@@ -4,6 +4,7 @@
   "package": "com.elefant.botAuthentication.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "LoginPinger"
   ],
   "injectors": {
     "defaultRequire": 1
