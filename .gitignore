@@ -9,7 +9,7 @@
 out/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
-
+client-tester/*
 # JIRA plugin
 atlassian-ide-plugin.xml
 
