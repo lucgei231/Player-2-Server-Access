@@ -10,12 +10,18 @@
   "icon": "assets/bot-authentication/icon.png",
   "environment": "*",
   "entrypoints": {
+    "client": [
+      "com.elefant.botAuthentication.client.BotAuthenticationClient"
+    ],
     "main": [
       "com.elefant.botAuthentication.BotAuthentication"
     ]
   },
   "mixins": [
-    "bot-authentication.mixins.json",
+    {
+      "config":"bot-authentication.mixins.json",
+      "environment": "server"
+    },
     {
       "config": "bot-authentication.client.mixins.json",
       "environment": "client"

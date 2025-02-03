@@ -1,4 +1,4 @@
-package com.elefant.botAuthentication.mixin.server;
+package com.elefant.botAuthentication.mixin;
 
 
 import net.minecraft.server.network.ServerLoginNetworkHandler;
