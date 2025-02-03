@@ -6,5 +6,6 @@ public class BotAuthentication implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
     }
 }
