@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "bot-authentication",
+  "version": "${version}",
+  "name": "bot-authentication",
+  "description": "Allows AI friends from Elefant to join your minecraft server!",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/bot-authentication/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.elefant.botAuthentication.BotAuthentication"
+    ]
+  },
+  "mixins": [
+    "bot-authentication.mixins.json",
+    {
+      "config": "bot-authentication.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
