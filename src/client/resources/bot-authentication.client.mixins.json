@@ -10,6 +10,8 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "ConnectionFixer"
+    "ConnectionFixer",
+    "NetworkStateBuilderPatcher",
+    "PacketDispatcher"
   ]
 }
