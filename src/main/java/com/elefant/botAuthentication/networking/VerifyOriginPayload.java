@@ -1,14 +1,9 @@
 package com.elefant.botAuthentication.networking;
 
-import net.minecraft.network.NetworkSide;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
-import net.minecraft.network.listener.PacketListener;
 import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.PacketType;
-import net.minecraft.util.Identifier;
 
 public record VerifyOriginPayload(String input) implements CustomPayload {
     public static final CustomPayload.Id<VerifyOriginPayload> ID = new CustomPayload.Id<>(ElefantNetworkingConstants.VERIFY_ORIGIN);
