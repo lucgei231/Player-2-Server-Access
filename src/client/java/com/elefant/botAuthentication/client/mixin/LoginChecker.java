@@ -1,4 +1,4 @@
-package com.elefant.botAuthentication.mixin;
+package com.elefant.botAuthentication.client.mixin;
 
 
 import com.elefant.botAuthentication.networking.VerifyOriginPayload;
@@ -27,10 +27,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LoginStates.class)
 public class LoginChecker {
+
     @Mutable
-    @Shadow
-    @Final
-    public static NetworkState<ServerLoginPacketListener> C2S;
+    @Shadow @Final public static NetworkState<ServerLoginPacketListener> C2S;
 
     @Mutable
     @Shadow @Final public static NetworkState.Factory<ServerLoginPacketListener, PacketByteBuf> C2S_FACTORY;

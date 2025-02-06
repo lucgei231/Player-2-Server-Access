@@ -8,6 +8,7 @@ import net.minecraft.network.NetworkStateBuilder;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.listener.ClientCommonPacketListener;
 import net.minecraft.network.listener.PacketListener;
+import net.minecraft.network.listener.ServerLoginPacketListener;
 import net.minecraft.network.packet.PacketType;
 import net.minecraft.network.packet.c2s.common.CustomPayloadC2SPacket;
 import net.minecraft.util.Identifier;
@@ -19,12 +20,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.function.Consumer;
 
-@Mixin(NetworkStateBuilder.class)
-public abstract class NetworkStateBuilderPatcher<T extends PacketListener, B extends RegistryByteBuf> {
+/*@Mixin(NetworkStateBuilder.class)
+public abstract class NetworkStateBuilderPatcher<T extends ServerLoginPacketListener, B extends RegistryByteBuf> {
 
 
     @Shadow
-    public static <T extends PacketListener, B extends RegistryByteBuf> NetworkState.Factory<T, B> c2s(NetworkPhase type, Consumer<NetworkStateBuilder<T, B>> registrar) {
+    public static <T extends ServerLoginPacketListener, B extends RegistryByteBuf> NetworkState.Factory<T, B> c2s(NetworkPhase type, Consumer<NetworkStateBuilder<T, B>> registrar) {
         return null;
     }
 
@@ -38,4 +39,4 @@ public abstract class NetworkStateBuilderPatcher<T extends PacketListener, B ext
             builder.add(packetType, VerifyOriginPayload.CODEC);
         });
     }
-}
+}*/

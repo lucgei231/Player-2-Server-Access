@@ -11,7 +11,8 @@
   },
   "mixins": [
     "ConnectionFixer",
-    "NetworkStateBuilderPatcher",
-    "PacketDispatcher"
+    "PacketDispatcherPatcher",
+    "LoginStatesPatcher",
+    "LoginChecker"
   ]
 }

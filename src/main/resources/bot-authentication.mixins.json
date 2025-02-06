@@ -4,9 +4,12 @@
   "package": "com.elefant.botAuthentication.mixin",
   "compatibilityLevel": "JAVA_21",
   "server": [
-    "LoginChecker"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "mixins": [
+    "LoginChecker",
+    "LoginStatesPatcher"
+  ]
 }
