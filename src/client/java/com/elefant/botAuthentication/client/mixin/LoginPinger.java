@@ -10,13 +10,9 @@ import com.elefant.botAuthentication.networking.VerifyOriginPayload;
 public class LoginPinger {
     @Redirect(method = "run", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/ClientConnection;send(Lnet/minecraft/network/packet/Packet;)V"))
     public void insert(ClientConnection instance, Packet<?> packet) {
-        VerifyOriginPayload a = new VerifyOriginPayload("Test");
-
-
+        VerifyOriginPayload a = new VerifyOriginPayload("Secret");
         instance.send(a);
         instance.send(packet);
-        System.out.println("HELLO");
-
     }
 }
 

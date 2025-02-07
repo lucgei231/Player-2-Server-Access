@@ -38,7 +38,5 @@ public class LoginChecker {
                         .add(CookiePackets.COOKIE_RESPONSE, CookieResponseC2SPacket.CODEC)
                         .add(VerifyOriginPayload.TYPE, VerifyOriginPayload.CODEC)
         );
-        //C2S = C2S_FACTORY.bind(PacketByteBuf::new);
-
     }
 }

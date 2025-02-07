@@ -23,7 +23,8 @@ public record VerifyOriginPayload(String input) implements Packet<ServerLoginPac
     @Override
     public void apply(ServerLoginPacketListener listener) {
         System.out.println("Hi, you have reached the apply method!");
-        ((LoginNetworkHandlerPatcher)listener).setProfileName("POOP");
+        System.out.println(this.input());
+        ((LoginNetworkHandlerPatcher)listener).setProfileName(this.input());
     }
 
 }
