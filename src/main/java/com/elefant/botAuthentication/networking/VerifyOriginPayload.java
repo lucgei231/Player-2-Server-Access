@@ -8,7 +8,6 @@ import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.listener.ServerLoginPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.PacketType;
-import net.minecraft.server.network.ServerLoginNetworkHandler;
 
 public record VerifyOriginPayload(String input) implements Packet<ServerLoginPacketListener> {
     public static final PacketCodec<PacketByteBuf, VerifyOriginPayload> CODEC = PacketCodec.tuple(PacketCodecs.STRING, VerifyOriginPayload::input, VerifyOriginPayload::new);
@@ -25,7 +24,6 @@ public record VerifyOriginPayload(String input) implements Packet<ServerLoginPac
     public void apply(ServerLoginPacketListener listener) {
         System.out.println("Hi, you have reached the apply method!");
         ((LoginNetworkHandlerPatcher)listener).setProfileName("POOP");
-        //((LoginNetworkListenerPatcher) listener).onVerifyOrigin(this);
     }
 
 }
