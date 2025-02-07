@@ -31,12 +31,5 @@
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
-  },
-  "custom": {
-    "loom:injected_interfaces": {
-      "net/minecraft/class_3248": ["com/elefant/botAuthentication/ElefantLoginPackets"],
-      "net/minecraft/class_2911": ["com/elefant/botAuthentication/ElefantLoginPackets"]
-
-    }
   }
 }

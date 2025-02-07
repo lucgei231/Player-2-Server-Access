@@ -1,5 +1,6 @@
 package com.elefant.botAuthentication.networking;
 
+import com.elefant.botAuthentication.mixin.LoginNetworkHandlerPatcher;
 import net.minecraft.network.NetworkSide;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.codec.PacketCodec;
@@ -23,8 +24,7 @@ public record VerifyOriginPayload(String input) implements Packet<ServerLoginPac
     @Override
     public void apply(ServerLoginPacketListener listener) {
         System.out.println("Hi, you have reached the apply method!");
-        ((ServerLoginNetworkHandler)listener.getClass().getGenericSuperclass()).profileName = this.input;
-        System.out.println(((ServerLoginNetworkHandler) listener.getClass().getGenericSuperclass()).getConnectionInfo());
+        ((LoginNetworkHandlerPatcher)listener).setProfileName("POOP");
         //((LoginNetworkListenerPatcher) listener).onVerifyOrigin(this);
     }
 
