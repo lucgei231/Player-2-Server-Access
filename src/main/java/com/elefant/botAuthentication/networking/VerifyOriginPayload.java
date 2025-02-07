@@ -16,7 +16,6 @@ public record VerifyOriginPayload(String input) implements Packet<ServerLoginPac
     public static final PacketCodec<PacketByteBuf, VerifyOriginPayload> CODEC = PacketCodec.tuple(PacketCodecs.STRING, VerifyOriginPayload::input, VerifyOriginPayload::new);
 
 
-
     @Override
     public PacketType<VerifyOriginPayload> getPacketType() {
         return TYPE;
