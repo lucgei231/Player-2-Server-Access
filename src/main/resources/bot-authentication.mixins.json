@@ -10,6 +10,6 @@
   },
   "mixins": [
     "LoginChecker",
-    "LoginStatesPatcher"
+    "LoginNetworkHandlerPatcher"
   ]
 }

@@ -1,6 +1,5 @@
 package com.elefant.botAuthentication;
 
-import com.elefant.botAuthentication.mixin.LoginStatesPatcher;
 import com.elefant.botAuthentication.networking.ElefantNetworkingConstants;
 import com.elefant.botAuthentication.networking.VerifyOriginPayload;
 import net.fabricmc.api.ModInitializer;
@@ -27,13 +26,9 @@ public class BotAuthentication implements ModInitializer {
 
 
 
-    static {
 
-
-    }
     @Override
     public void onInitialize() {
-
 
         ServerLoginNetworking.registerGlobalReceiver(ElefantNetworkingConstants.VERIFY_ORIGIN, (server, handler, baz, packetByteBuf, loginSynchronizer, packetSender) -> {
             String input = packetByteBuf.readString();

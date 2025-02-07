@@ -1,6 +1,5 @@
 package com.elefant.botAuthentication.client;
 
-import com.elefant.botAuthentication.mixin.LoginStatesPatcher;
 import com.elefant.botAuthentication.networking.ElefantNetworkingConstants;
 import com.elefant.botAuthentication.networking.VerifyOriginPayload;
 import net.fabricmc.api.ClientModInitializer;
