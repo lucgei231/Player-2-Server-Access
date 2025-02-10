@@ -7,15 +7,14 @@ import net.fabricmc.api.ModInitializer;
 
 
 
-public class BotAuthentication implements ModInitializer {
-
-
-
-
-
-
+public class BotAuthentication implements net.fabricmc.api.DedicatedServerModInitializer, ModInitializer {
     @Override
     public void onInitialize() {
+
+    }
+
+    @Override
+    public void onInitializeServer() {
 
     }
 }

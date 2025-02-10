@@ -27,8 +27,6 @@ public class LoginChecker {
 
     @Redirect(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/NetworkStateBuilder;c2s(Lnet/minecraft/network/NetworkPhase;Ljava/util/function/Consumer;)Lnet/minecraft/network/NetworkState$Factory;"))
     private static NetworkState.Factory<ServerLoginPacketListener, PacketByteBuf> init(NetworkPhase type, Consumer<NetworkStateBuilder<ServerLoginPacketListener, PacketByteBuf>> registrar) {
-        System.out.println("HI I DID IT YAY");
-
         return NetworkStateBuilder.c2s(
                 NetworkPhase.LOGIN,
                 builder -> builder.add(LoginPackets.HELLO_C2S, LoginHelloC2SPacket.CODEC)

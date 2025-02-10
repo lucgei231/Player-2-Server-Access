@@ -18,15 +18,8 @@ public class SignatureVerifier {
 
         byte[] signatureBytes = Base64.getDecoder().decode(signature);
 
-        // Read and process the public key from file
-        String publicKeyPEM = new String(Files.readAllBytes(Paths.get("public_key.pem")));
-        publicKeyPEM = publicKeyPEM
-                .replace("-----BEGIN PUBLIC KEY-----", "")
-                .replace("-----END PUBLIC KEY-----", "")
-                .replaceAll("\\s", "");
-
         // Create public key instance
-        byte[] publicKeyBytes = Base64.getDecoder().decode(publicKeyPEM);
+        byte[] publicKeyBytes = Base64.getDecoder().decode("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl+5V+nnwelBIpfve3I0Fw4oLn+qLoLoOow/xmB+YPgRylH/amYSSITm9UuHxvodk43m+815ByN6DmdqBRB/HawsFeNWIPSH2PRCYykmEs6lfE/vKhnbedxvcCQfsVdGZhQ2rtYo1BdyvmFmjJJbXWV1Jtdednkg6zM0S8hROQJetpUXdfAteVNHVUbhJK4JJLfk0TXUrJg83+kxfIm3pezlacJ3Dfow3i2yY+YmPdz11P/XOAi8L/Ct0dAyRaNDoYf4A5MJ70DSdvoGsAHfa/Z4oY/WCvKowp6GSbunF8bQtnrnnWXz5B4hC3bJi/i5jrdiSawYIRK0621c8Q3EgTQIDAQAB");
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
         PublicKey publicKey = keyFactory.generatePublic(keySpec);
@@ -60,4 +53,6 @@ public class SignatureVerifier {
         sig.update(message.getBytes(StandardCharsets.UTF_8));
         return Base64.getEncoder().encodeToString(sig.sign());
     }
+
+
 }
