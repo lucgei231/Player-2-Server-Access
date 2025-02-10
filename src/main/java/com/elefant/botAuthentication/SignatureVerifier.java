@@ -19,7 +19,7 @@ public class SignatureVerifier {
         byte[] signatureBytes = Base64.getDecoder().decode(signature);
 
         // Read and process the public key from file
-        String publicKeyPEM = new String(Files.readAllBytes(Paths.get("/home/brynte/elefant/bot-authentication/public_key.pem")));
+        String publicKeyPEM = new String(Files.readAllBytes(Paths.get("public_key.pem")));
         publicKeyPEM = publicKeyPEM
                 .replace("-----BEGIN PUBLIC KEY-----", "")
                 .replace("-----END PUBLIC KEY-----", "")
@@ -42,7 +42,7 @@ public class SignatureVerifier {
 
     public static String signString(String message) throws Exception {
         // Read and process the private key from file
-        String privatePEM = new String(Files.readAllBytes(Paths.get("/home/brynte/elefant/bot-authentication/private_key.pem")));
+        String privatePEM = new String(Files.readAllBytes(Paths.get("private_key.pem")));
         privatePEM = privatePEM
                 .replace("-----BEGIN PRIVATE KEY-----", "")
                 .replace("-----END PRIVATE KEY-----", "")
