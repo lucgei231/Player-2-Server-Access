@@ -7,7 +7,6 @@ public class BotAuthenticationClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        System.out.println("Hello from the client side!");
 
     }
 }

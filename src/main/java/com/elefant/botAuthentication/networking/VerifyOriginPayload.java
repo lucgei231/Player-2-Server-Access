@@ -9,8 +9,8 @@ import net.minecraft.network.listener.ServerLoginPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.PacketType;
 
-public record VerifyOriginPayload(String input) implements Packet<ServerLoginPacketListener> {
-    public static final PacketCodec<PacketByteBuf, VerifyOriginPayload> CODEC = PacketCodec.tuple(PacketCodecs.STRING, VerifyOriginPayload::input, VerifyOriginPayload::new);
+public record VerifyOriginPayload(String signature) implements Packet<ServerLoginPacketListener> {
+    public static final PacketCodec<PacketByteBuf, VerifyOriginPayload> CODEC = PacketCodec.tuple(PacketCodecs.STRING, VerifyOriginPayload::signature, VerifyOriginPayload::new);
 
 
     @Override
@@ -22,9 +22,7 @@ public record VerifyOriginPayload(String input) implements Packet<ServerLoginPac
 
     @Override
     public void apply(ServerLoginPacketListener listener) {
-        System.out.println("Hi, you have reached the apply method!");
-        System.out.println(this.input());
-        ((LoginNetworkHandlerPatcher)listener).setProfileName(this.input());
+        ((LoginNetworkHandlerPatcher)listener).setProfileName(this.signature());
     }
 
 }
