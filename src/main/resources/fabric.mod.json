@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "bot-authentication",
   "description": "Allows AI friends from Elefant to join your minecraft server!",
-  "authors": [],
+  "authors": ["Elefant AI Inc."],
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "assets/bot-authentication/icon.png",
