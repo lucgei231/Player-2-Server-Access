@@ -11,12 +11,14 @@ import java.util.Optional;
 @Mixin(MinecraftServer.class)
 public class ServerBrandingMixin {
     @Inject(method = "getServerMetadata", at = @At("RETURN"), cancellable = true)
-    public void test(CallbackInfoReturnable<ServerMetadata> cir) {
+    public void addServerBrand(CallbackInfoReturnable<ServerMetadata> cir) {
         ServerMetadata metadata = cir.getReturnValue();
 
-        ServerMetadata.Version oldVersion = metadata.version().get();
-        ServerMetadata.Version version = new ServerMetadata.Version(oldVersion.gameVersion() + " (Player2 Supported)", oldVersion.protocolVersion());
-        cir.setReturnValue(new ServerMetadata(metadata.description(), metadata.players(), Optional.of(version), metadata.favicon(), metadata.secureChatEnforced()));
+        if (metadata.version().isPresent()) {
+            ServerMetadata.Version oldVersion = metadata.version().get();
+            ServerMetadata.Version version = new ServerMetadata.Version(oldVersion.gameVersion() + " (Player2 Supported)", oldVersion.protocolVersion());
+            cir.setReturnValue(new ServerMetadata(metadata.description(), metadata.players(), Optional.of(version), metadata.favicon(), metadata.secureChatEnforced()));
+        }
     }
 }
 

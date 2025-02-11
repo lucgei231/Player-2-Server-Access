@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(ServerLoginNetworkHandler.class)
 public interface LoginNetworkHandlerPatcher {
-
     @Accessor("profileName")
     @Nullable
     public void setProfileName(String name);
