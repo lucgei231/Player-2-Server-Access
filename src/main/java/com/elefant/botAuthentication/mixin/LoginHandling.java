@@ -34,6 +34,5 @@ public abstract class LoginHandling {
                 ci.cancel();
             }
         }
-
     }
 }
