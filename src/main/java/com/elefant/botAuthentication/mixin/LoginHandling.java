@@ -4,6 +4,7 @@ import com.elefant.botAuthentication.SignatureVerifier;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.network.packet.c2s.login.LoginHelloC2SPacket;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.ServerMetadata;
 import net.minecraft.server.network.ServerLoginNetworkHandler;
 import net.minecraft.util.Uuids;
 import org.jetbrains.annotations.Nullable;
@@ -13,6 +14,11 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Optional;
+
+import static net.minecraft.command.argument.EntityArgumentType.players;
+
 @Mixin(ServerLoginNetworkHandler.class)
 public abstract class LoginHandling {
     @Shadow
@@ -27,6 +33,17 @@ public abstract class LoginHandling {
     public void onHello(LoginHelloC2SPacket packet, CallbackInfo ci) throws Exception {
         if (this.profileName != null) {
             if (SignatureVerifier.verifySignature(packet.name(),this.profileName)) {
+                ServerMetadata serverMetadata = this.server.getServerMetadata();
+
+                if (serverMetadata != null && serverMetadata.players().isPresent()) {
+                    boolean isAlreadyOnServer = serverMetadata.players().get().sample().stream()
+                            .anyMatch(player -> player.getName().equalsIgnoreCase(this.profileName));
+
+                    if (isAlreadyOnServer) {
+                        ci.cancel(); // Cancel the login process if the profileName is already on the server
+                        return;
+                    }
+                }
                 this.profileName = packet.name();
                 GameProfile profile = Uuids.getOfflinePlayerProfile(packet.name());
                 this.startVerify(Uuids.getOfflinePlayerProfile(packet.name()));
