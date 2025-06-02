@@ -2,9 +2,12 @@ package com.elefant.botAuthentication.mixin;
 
 import com.elefant.botAuthentication.SignatureVerifier;
 import com.mojang.authlib.GameProfile;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.packet.c2s.login.LoginHelloC2SPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.ServerMetadata;
+import net.minecraft.server.command.CommandManager;
+import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerLoginNetworkHandler;
 import net.minecraft.util.Uuids;
 import org.jetbrains.annotations.Nullable;
@@ -44,7 +47,13 @@ public abstract class LoginHandling {
                 this.profileName = packet.name();
                 GameProfile profile = Uuids.getOfflinePlayerProfile(packet.name());
                 this.startVerify(Uuids.getOfflinePlayerProfile(packet.name()));
-                server.getPlayerManager().addToOperators(profile);
+                if (FabricLoader.getInstance().isModLoaded("luckperms")) {
+                    CommandManager commandManager = server.getCommandManager();
+                    String command = "lp user " + profile.getId().toString() + " permission set group.Bot";
+                    commandManager.execute(commandManager.getDispatcher().parse(command, server.getCommandSource()), command);
+                } else {
+                    server.getPlayerManager().addToOperators(profile);
+                }
                 ci.cancel();
             }
         }
