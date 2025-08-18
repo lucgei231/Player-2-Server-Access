@@ -9,7 +9,7 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "LoginChecker",
+    "",
     "LoginHandling",
     "LoginNetworkHandlerPatcher",
     "ServerBrandingMixin"

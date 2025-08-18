@@ -10,7 +10,6 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "ConnectionFixer",
-    "LoginChecker"
+    "ConnectionFixer"
   ]
 }
