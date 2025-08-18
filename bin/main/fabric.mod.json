@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "p2-access",
+  "version": "${version}",
+  "name": "Player 2 Server Access",
+  "description": "Allows AI friends from Elefant to join your minecraft server!",
+  "authors": ["Elefant AI Inc."],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/bot-authentication/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.elefant.botAuthentication.client.BotAuthenticationClient"
+    ],
+    "main": [
+      "com.elefant.botAuthentication.BotAuthentication"
+    ]
+  },
+  "mixins": [
+    {
+      "config":"bot-authentication.mixins.json",
+      "environment": "server"
+    },
+    {
+      "config": "bot-authentication.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "0.16.4+1.21.7",
+    "minecraft": "${minecraft_version}"
+  }
+}
